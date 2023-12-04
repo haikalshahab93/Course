@@ -16,7 +16,6 @@ export default function App() {
         <Login />
         <Home />
       </AuthContext.Provider> */}
-      <Text>Halo Selamat Datang</Text>
       <BottomNavigation />  
     </View>
     
