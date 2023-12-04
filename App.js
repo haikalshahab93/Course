@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View,Text } from 'react-native';
+import Home from './App/Pages/Home';
+import Login from './App/Pages/Login';
+import { AuthContext } from './App/Context/AuthContext';
+import BottomNavigation from './App/Navigation/BottomNavigation';
 
 export default function App() {
+
+  const [userData, setUserData] = useState();
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {/* <AuthContext.Provider
+        value={{ userData, setUserData }}>
+        <Login />
+        <Home />
+      </AuthContext.Provider> */}
+      <Text>Halo Selamat Datang</Text>
+      <BottomNavigation />  
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#F6F8FC',
+
   },
 });
