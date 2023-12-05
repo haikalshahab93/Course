@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons'; // Import library untuk i
 import Screen1 from '../Pages/Home';
 import Screen2 from '../Pages/Login';
 import Screen3 from '../Pages/Home';
+import Screen4 from '../Pages/Home1';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,9 @@ const BottomNavigation = () => {
             } else if (route.name === 'Login') {
               iconName = 'ios-person';
             } else if (route.name === 'Kosong') {
-              iconName = 'ios-settings';
+              iconName = 'ios-book';
+            }else if (route.name === 'Kosong2') {
+              iconName = 'ios-book';
             }
 
             return <Icon name={iconName} size={size} color={color} />;
@@ -33,6 +36,7 @@ const BottomNavigation = () => {
         <Tab.Screen name="Depan" component={Screen1} />
         <Tab.Screen name="Login" component={Screen2} />
         <Tab.Screen name="Kosong" component={Screen3} />
+        <Tab.Screen name="Kosong2" component={Screen4} />
       </Tab.Navigator>
     </NavigationContainer>
   );
