@@ -15,9 +15,9 @@ export default function App() {
         value={{ userData, setUserData }}>
         {userData ?
           <NavigationContainer>
-            <HomeNavigation />
+            <Login />
           </NavigationContainer>
-          : <Login />}
+          : <BottomNavigation />}
       </AuthContext.Provider>
     </View>
 
