@@ -1,5 +1,11 @@
 
+# Install Awal
+1. Install Node Js
+2. npx create-expo-app
+3. npm install expo-cli --global
 
+
+# Package Tambahan
 npm install @react-navigation/native @react-navigation/bottom-tabs
 npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
