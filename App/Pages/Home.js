@@ -1,36 +1,21 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { ScrollView, Text, View } from 'react-native'
+import WelcomeHeader from '../Components/WelcomeHeader'
+import SearchBar from '../Components/SearchBar'
+import Slider from '../Components/Slider'
+import VideoCourseList from '../Components/VideoCourseList'
+import LessonCourse from '../Components/LessonCourse'
 
 const Home = () => {
     return (
-        <View style={styles.container}>
-        <Image
-          source={require('../../assets/logo.png' )} // Gantilah dengan path/logo Anda
-          style={styles.logo}
-        />
-        <Text style={styles.title}>Selamat Datang HRH Course  </Text>
-        {/* Tambahkan komponen atau konten lain sesuai kebutuhan */}
-      </View>
+        <ScrollView>
+            <WelcomeHeader/>
+            {/* <SearchBar/> use if needed*/}
+            <Slider/>
+            <VideoCourseList/>
+            <LessonCourse/>
+        </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#f5f5f5',
-    },
-    logo: {
-      width: 300,
-      height: 100,
-      marginBottom: 20,
-    },
-    title: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginBottom: 20,
-    },
-  });
 
 export default Home
