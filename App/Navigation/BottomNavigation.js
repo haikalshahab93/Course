@@ -1,42 +1,56 @@
-import React from 'react';
+// BottomNavigation.js
+import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons'; // Import library untuk ikon
-import Screen1 from '../Pages/Home_';
-import Screen2 from '../Pages/Login__';
-import Screen3 from '../Pages/Home_';
-import Screen4 from '../Pages/Home1';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Beranda from '../Pages/Home';
+import Login from '../Pages/Login';
+import Screen4 from '../Pages/LessonsDetails';
+import Register from '../Pages/Registration';
+import { AuthContext } from '../Context/AuthContext'; // Sesuaikan dengan konteks autentikasi Anda
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
+  const { userData } = useContext(AuthContext); // Pastikan userData memberikan informasi tentang status login
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName;
-            if (route.name === 'Depan') {
+            if (route.name === 'Beranda') {
               iconName = 'ios-home';
-            } else if (route.name === 'Login') {
-              iconName = 'ios-person';
-            } else if (route.name === 'Course') {
-              iconName = 'ios-school';
-            } else if (route.name === 'Leaderboard') {
-              iconName = 'ios-stats-chart';
+            } else if (route.name === 'Login' && !userData) {
+              // Hanya tampilkan "Login" jika belum login
+              iconName = 'log-in';
+            } else if (route.name === 'Kosong') {
+              iconName = 'ios-book';
+            } else if (route.name === 'Detail') {
+              iconName = 'ios-book';
+            } else if (route.name === 'Register' && !userData) {
+              // Hanya tampilkan "Register" jika belum login
+              iconName = 'ios-book';
             }
 
             return <Icon name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
-          // Additional tabBarStyle or other options can be added here
         })}
+        tabBarOptions={{
+          activeTintColor: '#EEBD3C',
+          inactiveTintColor: 'gray',
+        }}
       >
-        <Tab.Screen name="Depan" component={Screen1} />
-        <Tab.Screen name="Login" component={Screen2} />
-        <Tab.Screen name="Course" component={Screen3} />
-        <Tab.Screen name="Leaderboard" component={Screen4} />
+        <Tab.Screen name="Beranda" component={Beranda} />
+        {(!userData && (
+          <>
+            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen name="Register" component={Register} />
+          </>
+        ))}
+        <Tab.Screen name="Kosong" component={Login} />
+        <Tab.Screen name="Detail" component={Screen4} />
       </Tab.Navigator>
     </NavigationContainer>
   );

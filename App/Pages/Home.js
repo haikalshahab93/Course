@@ -8,7 +8,7 @@ import LessonCourse from '../Components/LessonCourse'
 
 const Home = () => {
     return (
-        <ScrollView>
+        <ScrollView style={{padding:20}}>
             <WelcomeHeader/>
             {/* <SearchBar/> use if needed*/}
             <Slider/>

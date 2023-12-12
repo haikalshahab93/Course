@@ -1,62 +1,91 @@
-import { View, Text, Image} from 'react-native'
-import React from 'react'
-import Colors from '../Shared/Colors'
-import { AntDesign } from '@expo/vector-icons';
+import React, { useState } from 'react'
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import styles from '../../src/screens/LoginScreen/styles';
+import { auth } from '../../firebase'
+import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 
-const Login = () => {
+export default function LoginScreen({navigation}) {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [validationMessage, setValidationMessage] = useState('')
+
+    const onFooterLinkPress = () => {
+        navigation.navigate('Register')
+    }
+
+    const onLoginPress = () => {
+        if(email === '' || password === ''){
+            setValidationMessage('required filled missing')
+            return;
+        }
+        signInWithEmailAndPassword(email, password)
+            .then((response) => {
+                const uid = response.user.uid
+                console.log(response)
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .get()
+                    .then(firestoreDocument => {
+                        if (!firestoreDocument.exists) {
+                            alert("User does not exist anymore.")
+                            return;
+                        }
+                        const user = firestoreDocument.data()
+                        navigation.navigate('Beranda', {user: user})
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
+            })
+            .catch(error => {
+                alert(error)
+            })
+    }
+
     return (
-        <View style={{margin:15}}>
-            <Image source={require('./../Assets/Login-page.png')} style={{ width:'100%'}}/>
-            <View style={{
-                paddingTop:40,
-                marginTop:-25,
-                backgroundColor:'fff',
-                borderTopRightRadius:30,
-                borderTopLeftRadius:30,}
-            }>
-                <Text style={{
-                    fontSize:35,
+        <View style={styles.container}>
+            <KeyboardAwareScrollView
+                style={{ flex: 1, width: '100%' }}
+                keyboardShouldPersistTaps="always">
+               <Image source={require('./../Assets/Login-page.png')} style={{ width:'100%'}}/>
+               <Text style={{
+                    fontSize:31,
                     textAlign:'center',
                     fontWeight:'bold'}
                 }
                 >
                     Welcome to HRH Course
                 </Text>
-                <Text style={{
-                    fontSize:20,
-                    textAlign:'center',
-                    marginTop:40}
-                }
-                >
-                    Login/Signup
-                </Text>
-                <View style={{
-                    backgroundColor:Colors.primary,
-                    padding:10,
-                    margin:30,
-                    display:'flex',
-                    flexDirection:'row',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    borderRadius:10}
-                }>
-                    <AntDesign 
-                        name="google"
-                        size={30}
-                        color="black"  
-                    />
-                    <Text style={{
-                        fontSize:18,
-                        fontWeight:'900',
-                        marginLeft:10,
-                        textAlign:'center'}
-                    }>
-                        Sign in With Google
-                    </Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder='E-mail'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setEmail(text)}
+                    value={email}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="#aaaaaa"
+                    secureTextEntry
+                    placeholder='Password'
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onLoginPress()}>
+                    <Text style={styles.buttonTitle}>Log in</Text>
+                </TouchableOpacity>
+                <View style={styles.footerView}>
+                    <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
                 </View>
-            </View>
+            </KeyboardAwareScrollView>
         </View>
     )
 }
-
-export default Login

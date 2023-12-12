@@ -11,9 +11,9 @@ const data = [
 
 const VideoCourseList = () => {
     const renderItem = ({ item }) => (
-        <View style={{margin:10}}>
+        <View>
             <Image source={item.image}
-            style={{width:300*1.17, height:150, borderRadius:10}} />
+            style={{width:300*1.26, height:150, borderRadius:10}} />
             <View style={{paddingTop:10}}>
                 <Text style={{fontWeight:'900', fontSize:18}}>{item.name}</Text>
                 <Text style={{fontWeight:'300', fontSize:13, color:Colors.grey}}>{item.amount} Lessons</Text>
@@ -28,7 +28,7 @@ const VideoCourseList = () => {
                 fontWeight:'900',
                 margin:10,
                 marginBottom:3
-            }}>
+            }}> 
                 Recommended for you
             </Text>
             

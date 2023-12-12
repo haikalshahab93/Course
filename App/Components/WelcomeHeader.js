@@ -7,7 +7,8 @@ const WelcomeHeader = () => {
         <View style={{display:'flex',
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center'}
+        alignItems:'center'
+        }
         }>
             <View>
             <Text style={{fontSize:15}}>Hello</Text>

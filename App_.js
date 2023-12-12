@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Home from './App/Pages/Home_';
-import Login from './App/Pages/Login__';
+import Login from './App/Pages/Login';
 import { AuthContext } from './App/Context/AuthContext';
 import BottomNavigation from './App/Navigation/BottomNavigation';
+import HomeNavigation from './App/Navigation/HomeNavigation';
 
 export default function App() {
 
   const [userData, setUserData] = useState();
-
+  o
   return (
     <View style={styles.container}>
       <AuthContext.Provider
@@ -17,7 +18,7 @@ export default function App() {
           <NavigationContainer>
             <Login />
           </NavigationContainer>
-          : <BottomNavigation />}
+          : <HomeNavigation />}
       </AuthContext.Provider>
     </View>
 

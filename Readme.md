@@ -24,3 +24,10 @@ npm i expo-web-browser
 <!-- expo-auth-session adalah perpustakaan yang bertujuan untuk menyederhanakan hidup kita untuk otorisasi OAuth2 dengan berbagai penyedia yang didukung, di antaranya Google dan Facebook. -->
 npm i expo-auth-session
 
+
+<!-- firebase login -->
+
+npm install firebase
+npm install --save @react-native-firebase/app
+npx expo install expo-dev-client
+npm i @react-native-google-signin/google-signin
