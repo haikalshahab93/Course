@@ -36,7 +36,7 @@ export default function LoginScreen({navigation}) {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-               <Text style={{
+                <Text style={{
                     fontSize: 68,
                     textAlign:'center',
                     fontWeight:'700'}

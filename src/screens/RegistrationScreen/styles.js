@@ -2,8 +2,25 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
+        backgroundColor: '#8ACFFB',
         flex: 1,
+        paddingTop: 100,
         alignItems: 'center'
+    },
+    inputContainer: {
+        backgroundColor: 'white',
+        marginTop: 30,
+        marginLeft: 30,
+        marginRight: 30,
+        marginBottom: -20,
+        padding: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+        borderRadius: 10,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 10 }, 
+        shadowOpacity: 0.2, 
+        shadowRadius: 15,
     },
     title: {
 
@@ -17,6 +34,7 @@ export default StyleSheet.create({
     },
     input: {
         height: 48,
+        width: '100%',
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
@@ -27,14 +45,18 @@ export default StyleSheet.create({
         paddingLeft: 16
     },
     button: {
-        backgroundColor: '#EEBD3C',
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
+        backgroundColor: '#FBE66A',
+        marginLeft: 50,
+        marginRight: 50,
+        margintop: -10,
         height: 48,
-        borderRadius: 5,
+        borderRadius: 100,
         alignItems: "center",
-        justifyContent: 'center'
+        justifyContent: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 10 }, 
+        shadowOpacity: 0.2, 
+        shadowRadius: 15,
     },
     buttonTitle: {
         color: 'black',
@@ -51,7 +73,6 @@ export default StyleSheet.create({
         color: '#2e2e2d'
     },
     footerLink: {
-        color: "#EEBD3C",
         fontWeight: "bold",
         fontSize: 16
     }
