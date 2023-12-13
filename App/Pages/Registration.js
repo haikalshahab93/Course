@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '../../src/screens/RegistrationScreen/styles';
-import { auth } from '../../firebase';
-import { getAuth,createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from '../../firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, collection } from "firebase/firestore"
 
 export default function Registration({ navigation }) {
     const [fullName, setFullName] = useState('')
@@ -11,18 +12,17 @@ export default function Registration({ navigation }) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
     }
 
-    const onRegisterPress = () => {
+    const onRegisterPress = async () => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
             return
         }
-
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
             .then((response) => {
                 // Signed in 
                 const uid = response.user.uid
@@ -32,15 +32,14 @@ export default function Registration({ navigation }) {
                     id: uid,
                     email,
                     fullName,
+                    createdAt: new Date().toUTCString()
                 };
-
-                const usersRef = firebase.firestore().collection('users')
-                usersRef.doc(uid).set(data)
-                    .then(() => {
-                        navigation.navigate('Beranda', { user: data })
-                    })
+                const useRef = collection(db, "users");
+                setDoc(doc(useRef, uid), data)
+                    .then(() =>navigation.navigate('Login', { user: data })
+                    )
                     .catch((error) => {
-                        console.log(xxx)
+                        console.log(error)
                     });
             })
             .catch((error) => {
