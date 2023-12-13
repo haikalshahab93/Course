@@ -2,7 +2,7 @@ import * as firebase from "firebase/app"
 import {getFirestore,collection,getDocs} from "firebase/firestore"
 import {getAuth} from "firebase/auth"
 import {initializeFirestore} from 'firebase/firestore';
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+// import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 
 // Your web app's Firebase configuration
@@ -18,10 +18,10 @@ const firebaseConfig = {
 // Initialize Firebase
   let app ;
   app = firebase.initializeApp(firebaseConfig)
-  // const db = initializeFirestore(app, {
-  //     experimentalForceLongPolling: true,
-  //   });
-  const db = getFirestore(app);
+  const db = initializeFirestore(app, {
+      experimentalForceLongPolling: true,
+    });
+  // const db = getFirestore(app);
   const auth = getAuth(app);
 
 

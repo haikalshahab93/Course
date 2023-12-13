@@ -14,7 +14,7 @@ const Profile = () => {
     return (
         <View style={styles.container}>
             <View style={styles.profileContainer}>
-                <Text style={styles.text}>Nama: {user?.name}</Text>
+                <Text style={styles.text}>Nama: {user?.fullName}</Text>
                 <Text style={styles.text}>Email: {user?.email}</Text>
                 <Text style={styles.text}>Id: {user?.id}</Text>
                 <Text style={styles.text}>Password: {user?.password}</Text>
