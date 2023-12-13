@@ -16,6 +16,8 @@ const Profile = () => {
             <View style={styles.profileContainer}>
                 <Text style={styles.text}>Nama: {user?.name}</Text>
                 <Text style={styles.text}>Email: {user?.email}</Text>
+                <Text style={styles.text}>Id: {user?.id}</Text>
+                <Text style={styles.text}>Password: {user?.password}</Text>
                 {/* Additional user info if needed */}
             </View>
             <Button title="Logout" onPress={signOut} />

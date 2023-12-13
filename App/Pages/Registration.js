@@ -25,6 +25,7 @@ export default function Registration({ navigation }) {
         await createUserWithEmailAndPassword(auth, email, password)
             .then((response) => {
                 // Signed in 
+                
                 const uid = response.user.uid
                 const user = response.user;
 
@@ -32,6 +33,7 @@ export default function Registration({ navigation }) {
                     id: uid,
                     email,
                     fullName,
+                    hashedPassword,
                     createdAt: new Date().toUTCString()
                 };
                 const useRef = collection(db, "users");

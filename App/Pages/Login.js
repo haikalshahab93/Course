@@ -2,8 +2,6 @@ import React, { useState,useContext } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '../../src/screens/LoginScreen/styles';
-import { db} from '../../firebase'
-import {doc,getDoc} from "firebase/firestore"
 import {useAuth} from '../Context/AuthContext';
 
 
@@ -22,13 +20,13 @@ export default function LoginScreen({navigation}) {
 
     const onLoginPress = async () => {
         if (email === '' || password === '') {
-          setValidationMessage('Required fields are missing');
+          setValidationMessage('Data Tidak Boleh Kosong');
           return;
         }
         try {
             await signIn(email, password);
           } catch (error) {
-            alert(error.message);
+            setValidationMessage('Email Atau Password Salah !');
           }
         };
        

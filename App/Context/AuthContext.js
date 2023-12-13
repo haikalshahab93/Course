@@ -2,6 +2,8 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { getAuth, onAuthStateChanged,signInWithEmailAndPassword , signOut as firebaseSignOut } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { db} from '../../firebase'
+import {doc,getDoc} from "firebase/firestore"
 
 const AuthContext = createContext();
 
@@ -28,17 +30,30 @@ const AuthProvider = ({ children }) => {
 
     const signIn = async (email, password) => {
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            setUser({
-                uid: userCredential.user.uid,
-                email: userCredential.user.email,
-                // tambahkan informasi pengguna lainnya sesuai kebutuhan
-            });
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const uid = userCredential.user.uid;
+          console.log('Berhasil melakukan otentikasi. UID:', uid);
+      
+          const userRef = doc(db, "users", uid);
+          console.log('Path referensi pengguna:', userRef.path);
+      
+          const userSnapshot = await getDoc(userRef);
+          console.log(userSnapshot);
+      
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.data();
+            console.log('Data pengguna berhasil diambil:', userData);
+      
+            // Mengasumsikan `setUser` adalah fungsi yang mengatur data pengguna dalam state Anda
+            setUser(userData);
+          } else {
+            alert("Pengguna tidak lagi ada.");
+          }
         } catch (error) {
-            console.error('Error signing in:', error.message);
-            throw error;
+          console.error('Error saat login:', error.message);
+          throw error; // Lempar kembali kesalahan untuk penanganan lebih lanjut, jika diperlukan
         }
-    };
+      };
 
     const signOut = async () => {
         try {
