@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const BottomNavigation = () => {
   const { user } = useAuth();
 
-  return (
+   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName={user ? 'Beranda' : 'Login'}
@@ -42,13 +42,17 @@ const BottomNavigation = () => {
           inactiveTintColor: 'gray',
         }}
       >
+        {/* Tampilkan Beranda bahkan jika pengguna belum login */}
+        <Tab.Screen name="Beranda" component={Beranda} />
+
         {user ? (
-          <Tab.Screen name="Beranda" component={Beranda} />
+          <Tab.Screen name="Profile" component={Profile} />
         ) : (
-          <Tab.Screen name="Login" component={Login} />
+          <>
+            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen name="Register" component={Register} />
+          </>
         )}
-        {!user && <Tab.Screen name="Register" component={Register} />}
-        {user && <Tab.Screen name="Profile" component={Profile} />}
       </Tab.Navigator>
     </NavigationContainer>
   );
