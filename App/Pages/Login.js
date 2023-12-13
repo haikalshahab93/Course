@@ -36,44 +36,71 @@ export default function LoginScreen({navigation}) {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-               <Image source={require('../Assets/Login-page.png')} style={{ width:'100%'}}/>
                <Text style={{
-                    fontSize:31,
+                    fontSize: 68,
                     textAlign:'center',
-                    fontWeight:'bold'}
+                    fontWeight:'700'}
                 }
                 >
+                    Login
+                </Text>
+                <Text style={{
+                    fontSize: 16,
+                    marginBottom: 30,
+                    textAlign:'center',
+                    fontWeight:'400'}
+                }>
                     Welcome to HRH Course
                 </Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='E-mail'
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setEmail(text)}
-                    value={email}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholderTextColor="#aaaaaa"
-                    secureTextEntry
-                    placeholder='Password'
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => onLoginPress()}>
-                    <Text style={styles.buttonTitle}>Log in</Text>
-                </TouchableOpacity>
-                {validationMessage ? <Text style={{ color: 'red', textAlign:'center' }}>{validationMessage}</Text> : null}
+                <View
+                    style={styles.inputContainer}>
+                    <Text style={{
+                    fontSize: 16,
+                    fontWeight:'600'}
+                    }
+                    >
+                        Email
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Enter E-mail'
+                        placeholderTextColor="#aaaaaa"
+                        onChangeText={(text) => setEmail(text)}
+                        value={email}
+                        underlineColorAndroid="transparent"
+                        autoCapitalize="none"
+                    />
+                    <Text style={{
+                    fontSize: 16,
+                    fontWeight:'600'}
+                    }
+                    >
+                        Password
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholderTextColor="#aaaaaa"
+                        secureTextEntry
+                        placeholder='Enter Password'
+                        onChangeText={(text) => setPassword(text)}
+                        value={password}
+                        underlineColorAndroid="transparent"
+                        autoCapitalize="none"
+                    />
+                </View>
+                <View>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => onLoginPress()}>
+                        <Text style={styles.buttonTitle}>Login</Text>
+                    </TouchableOpacity>
+                    {validationMessage ? <Text style={{ color: 'red', textAlign:'center' }}>{validationMessage}</Text> : null}                    
+                </View>
                 <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                    <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Signup Here</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
         </View>
     )
 }
+
