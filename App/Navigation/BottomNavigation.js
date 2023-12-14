@@ -1,5 +1,6 @@
 // BottomNavigation.js
 import React, { useContext } from 'react';
+import { useAuth } from '../Context/AuthContext';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,14 +8,14 @@ import Beranda from '../Pages/Home';
 import Login from '../Pages/Login';
 import Profile from '../Pages/Profile';
 import Register from '../Pages/Registration';
-import { useAuth } from '../Context/AuthContext';
+import CourseDetail from '../Pages/CourseDetail';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   const { user } = useAuth();
 
-   return (
+  return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName={user ? 'Beranda' : 'Login'}
@@ -30,6 +31,8 @@ const BottomNavigation = () => {
               iconName = 'ios-book';
             } else if (route.name === 'Profile' && user) {
               iconName = 'person';
+            } else if (route.name === 'CourseDetail' && user) {
+              iconName = 'person';
             } else {
               iconName = 'ios-book';
             }
@@ -37,16 +40,16 @@ const BottomNavigation = () => {
             return <Icon name={iconName} size={size} color={color} />;
           },
         })}
-        tabBarOptions={{
-          activeTintColor: '#EEBD3C',
-          inactiveTintColor: 'gray',
-        }}
       >
         {/* Tampilkan Beranda bahkan jika pengguna belum login */}
         <Tab.Screen name="Beranda" component={Beranda} />
 
         {user ? (
-          <Tab.Screen name="Profile" component={Profile} />
+          <>
+            <Tab.Screen name="Profile" component={Profile} />
+            {/* <Tab.Screen name="CourseDetail" component={CourseDetail} /> */}
+          </>
+
         ) : (
           <>
             <Tab.Screen name="Login" component={Login} />

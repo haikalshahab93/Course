@@ -5,49 +5,62 @@ import styles from '../../src/screens/RegistrationScreen/styles';
 import { auth, db } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, collection } from "firebase/firestore"
-
-export default function Registration({ navigation }) {
-    const [fullName, setFullName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+import * as Crypto from 'expo-crypto';
 
 
+const Registration = ({ navigation }) => {
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+  
     const onFooterLinkPress = () => {
-        navigation.navigate('Login')
-    }
+      navigation.navigate('Login');
+    };
+  
 
-    const onRegisterPress = async () => {
-        if (password !== confirmPassword) {
-            alert("Passwords don't match.")
-            return
+    const hashPassword = async (password) => {
+        try {
+          const hashedPassword = await Crypto.digestStringAsync(
+            Crypto.CryptoDigestAlgorithm.SHA256,
+            password
+          );
+          return hashedPassword;
+        } catch (error) {
+          console.error('Error hashing password:', error.message);
+          throw error;
         }
-        await createUserWithEmailAndPassword(auth, email, password)
-            .then((response) => {
-                // Signed in 
-                
-                const uid = response.user.uid
-                const user = response.user;
+      };
+      
+    const onRegisterPress = async () => {
+      if (password !== confirmPassword) {
+        Alert.alert("Passwords don't match.");
+        return;
+      }
+  
+      try {
+        const response = await createUserWithEmailAndPassword(auth, email, password);
+        const uid = response.user.uid;
+        const hashedPassword = await hashPassword(password);
+  
+        const userData = {
+          id: uid,
+          email,
+          fullName,
+          password: hashedPassword,
+          createdAt: new Date().toUTCString(),
+        };
+  
+        const usersRef = collection(db, 'users');
+        await setDoc(doc(usersRef, uid), userData);
+  
+        navigation.navigate('Beranda',{user:userData});
 
-                const data = {
-                    id: uid,
-                    email,
-                    fullName,
-                    hashedPassword,
-                    createdAt: new Date().toUTCString()
-                };
-                const useRef = collection(db, "users");
-                setDoc(doc(useRef, uid), data)
-                    .then(() =>navigation.navigate('Login', { user: data })
-                    )
-                    .catch((error) => {
-                        console.log(error)
-                    });
-            })
-            .catch((error) => {
-                alert(error)
-            });
-    }
+      } catch (error) {
+        console.error('Registration failed:', error.message);
+        Alert.alert('Registration failed. Please try again.');
+      }
+    };
 
     return (
         <View style={styles.container}>
@@ -156,3 +169,5 @@ export default function Registration({ navigation }) {
         </View>
     )
 }
+
+export default Registration;

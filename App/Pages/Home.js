@@ -6,13 +6,17 @@ import Slider from '../Components/Slider'
 import VideoCourseList from '../Components/VideoCourseList'
 import LessonCourse from '../Components/LessonCourse'
 
-const Home = () => {
+
+const Home = ({route}) => {
+
+    const user = route.params?.user;
+
     return (
         <ScrollView style={{padding:20}}>
-            <WelcomeHeader/>
+            <WelcomeHeader user={user}/>
             {/* <SearchBar/> use if needed*/}
             <Slider/>
-            <VideoCourseList/>
+            <VideoCourseList />
             <LessonCourse/>
         </ScrollView>
     )

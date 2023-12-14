@@ -1,9 +1,28 @@
+import { useState,useEffect } from 'react';
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { useAuth } from '../Context/AuthContext';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+
 
 const WelcomeHeader = () => {
-    const { user, setUser } = useAuth();
+    const {user} = useAuth();
+    const [photoUrl, setPhotoUrl] = useState(null);
+      
+        useEffect(() => {
+          const fetchPhoto = async () => {
+            try {
+              const storage = getStorage();
+              const photoRef = ref(storage,`profile/${user.photo}`);
+              const url = await getDownloadURL(photoRef);
+              setPhotoUrl(url);
+            } catch (error) {
+              console.error('Error fetching photo:', error.message);
+            }
+          };
+      
+          fetchPhoto();
+        }, []);
 
     return (
         <View style={{
@@ -23,7 +42,7 @@ const WelcomeHeader = () => {
                 
             </View>
             {user ? (
-                <Image source={require('./../Assets/Profile-pic.png')} style={{ width: 50, height: 50, borderRadius: 100, }} />
+                <Image source={{uri:photoUrl}} style={{ width: 50, height: 50, borderRadius: 100, }} />
             ) : (
                 <Image source={require('./../Assets/Profile-pic.png')} style={{ width: 50, height: 50, borderRadius: 100, }} />
             )}

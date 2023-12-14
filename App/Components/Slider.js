@@ -3,9 +3,11 @@ import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react
 import { auth, db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';  // Updated import statements
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import { useNavigation } from '@react-navigation/native';
 
 const Slider = () => {
   const [sliderData, setSliderData] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
 
@@ -17,8 +19,8 @@ const Slider = () => {
 
         const data = await Promise.all(sliderSnapshot.docs.map(async (doc) => {
           // Asumsikan setiap dokumen memiliki properti imageRef dan otherData
-          const { id, imageUrl, name } = doc.data();
-          console.log(name);
+          const { id, imageUrl, name} = doc.data();
+    
           // Gunakan imageRef sebagai child reference ke root storage
           const imageStorageRef = ref(storage, imageUrl);
 
@@ -55,8 +57,8 @@ const Slider = () => {
   );
 
   const handlePress = (item) => {
-    console.log('Item Pressed:', item);
     // Implement the desired functionality when an item is pressed
+    navigation.navigate('CourseDetail', { itemId: item.id, itemName: item.name, itemImageUrl: item.imageUrlData });
   };
 
   return (

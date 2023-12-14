@@ -14,10 +14,13 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
+
+                console.log(user,'-----------------------------------ss')
                 // Jika pengguna sudah login, ambil informasi pengguna dan atur ke state
                 setUser({
                     uid: user.uid,
                     email: user.email,
+                    
                     // tambahkan informasi pengguna lainnya sesuai kebutuhan
                 });
             } else {

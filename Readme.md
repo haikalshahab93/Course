@@ -31,3 +31,10 @@ npm install firebase
 npm install --save @react-native-firebase/app
 npx expo install expo-dev-client
 npm i @react-native-google-signin/google-signin
+
+
+<!-- 
+npm i react-native-tab-view
+
+React Native Tab View is a cross-platform Tab View component for React Native implemented using react-native-pager-view on Android & iOS, and PanResponder on Web, macOS, and Windows.
+ -->
