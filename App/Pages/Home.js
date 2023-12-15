@@ -14,7 +14,7 @@ const Home = ({route}) => {
     return (
         <ScrollView style={{padding:20}}>
             <WelcomeHeader user={user}/>
-            {/* <SearchBar/> use if needed*/}
+            {/* <SearchBar/> use if needed */}
             <Slider/>
             <VideoCourseList />
             <LessonCourse/>
