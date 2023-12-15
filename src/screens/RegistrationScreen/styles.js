@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         backgroundColor: '#8ACFFB',
         flex: 1,
-        paddingTop: 100,
+        paddingTop: 50,
         alignItems: 'center'
     },
     inputContainer: {
