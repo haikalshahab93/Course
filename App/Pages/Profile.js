@@ -34,10 +34,15 @@ const Profile = () => {
   
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={require('../Assets/slide4.png')}
+        <View style={styles.imageContainer}>
+          <Image 
+            source={require('../Assets/profilebg.png')}
+            style={styles.image} />
+        </View>
+        {/* <ImageBackground
+          source={require('../Assets/profilebg.png')}
           style={styles.backgroundImage}
-        >
+        > */}
           <View style={styles.profileContainer}>
             <Image
               source={require('../Assets/Profile-pic.png')}
@@ -60,22 +65,22 @@ const Profile = () => {
               </>
             ) : (
               <>
-                <Text style={styles.text}>Nama: {user?.fullName}</Text>
-                <Text style={styles.text}>Email: {user?.email}</Text>
+                <Text style={styles.textName}>{user?.fullName}</Text>
+                <Text style={styles.textEmail}>{user?.email}</Text>
               </>
             )}
           </View>
-        </ImageBackground>
+        {/* </ImageBackground> */}
         <View style={styles.bottomContainer}>
           {isEditing ? (
             <>
-              <Button title="Save Changes" onPress={handleSaveChanges} />
-              <Button title="Cancel" onPress={handleCancelEdit} />
+              <Button style={styles.button} title="Save Changes" onPress={handleSaveChanges} />
+              <Button style={styles.button} title="Cancel" onPress={handleCancelEdit} />
             </>
           ) : (
             <>
-              <Button title="Edit Profile" onPress={() => setIsEditing(true)} />
-              <Button title="Logout" onPress={signOut} />
+              <Button style={styles.button} title="Edit Profile" onPress={() => setIsEditing(true)} />
+              <Button style={styles.button} title="Logout" onPress={signOut} />
             </>
           )}
         </View>
