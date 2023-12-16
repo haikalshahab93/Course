@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import { View, Text, Button, StyleSheet, ImageBackground, Image, Dimensions,TextInput } from 'react-native';
+import { View, Text, Button, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import { useAuth } from '../Context/AuthContext';
 import styles from '../../src/screens/ProfileScreen/styles';
 
@@ -74,14 +74,34 @@ const Profile = () => {
         <View style={styles.bottomContainer}>
           {isEditing ? (
             <>
-              <Button style={styles.button} title="Save Changes" onPress={handleSaveChanges} />
-              <Button style={styles.button} title="Cancel" onPress={handleCancelEdit} />
-            </>
-          ) : (
-            <>
-              <Button style={styles.button} title="Edit Profile" onPress={() => setIsEditing(true)} />
-              <Button style={styles.button} title="Logout" onPress={signOut} />
-            </>
+            <TouchableOpacity
+              style={[styles.button, styles.saveButton]}
+              onPress={handleSaveChanges}
+            >
+              <Text style={styles.buttonText}>Save Changes</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.button, styles.cancelButton]}
+              onPress={handleCancelEdit}
+            >
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <TouchableOpacity
+              style={[styles.button, styles.editButton]}
+              onPress={() => setIsEditing(true)}
+            >
+              <Text style={styles.buttonText}>Edit Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.button, styles.logoutButton]}
+              onPress={signOut}
+            >
+              <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
+          </>
           )}
         </View>
       </View>
