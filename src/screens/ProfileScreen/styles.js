@@ -18,7 +18,6 @@ export default StyleSheet.create({
         width: width,
         height: '100%',
         overflow: 'hidden'
-        
     },
     image: {
         width: '100%',
