@@ -3,6 +3,7 @@ import {Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '../../src/screens/LoginScreen/styles';
 import {useAuth} from '../Context/AuthContext';
+import { useFonts, LilitaOne_400Regular } from '@expo-google-fonts/lilita-one';
 
 
 export default function LoginScreen() {
@@ -30,6 +31,9 @@ export default function LoginScreen() {
           }
         };
        
+        const [fontsLoaded] = useFonts({
+            'LilitaOne': LilitaOne_400Regular,
+          });
 
     return (
         <View style={styles.container}>
@@ -42,20 +46,16 @@ export default function LoginScreen() {
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
                 <Text style={{
+                    fontFamily: 'LilitaOne',
                     fontSize: 72,
                     textAlign:'center',
-                    fontWeight:'700',
-                    color: '#FFE14D',
-                    textShadowColor: '#FFA441',
-                    textShadowOffset: { width: 2, height: 2 },
-                    textShadowRadius: 1,}
+                    color: '#FFE14D',}
                 }
                 >
                     Login
                 </Text>
                 <Text style={{
                     fontSize: 16,
-                    paddingTop: 15,
                     marginBottom: 30,
                     textAlign:'center',
                     fontWeight:'400',

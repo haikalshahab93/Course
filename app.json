@@ -2,8 +2,7 @@
   "expo": {
     "name": "hrh",
     "slug": "hrh",
-    "plugins": ["@react-native-google-signin/google-signin"],
-    "version": "1.0.0",
+    "plugins": ["@react-native-google-signin/google-signin"],    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
