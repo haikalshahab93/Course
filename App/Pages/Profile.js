@@ -36,7 +36,7 @@ const Profile = () => {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image 
-            source={require('../Assets/loginbg.png')}
+            source={require('../Assets/profilebg.png')}
             style={styles.image} />
         </View>
         {/* <ImageBackground

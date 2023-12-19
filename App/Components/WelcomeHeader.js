@@ -33,11 +33,11 @@ const WelcomeHeader = () => {
         }
         }>
             <View>
-                <Text style={{ fontSize: 15 }}>Hello</Text>
+                <Text style={{ fontSize: 15 }}>Hello!</Text>
                 {user ? (
                <Text style={{ fontWeight: 900, fontSize: 25 }}>{user.fullName}</Text>
             ) : (
-                <Text style={{ fontWeight: 900, fontSize: 25 }}>Guide</Text>
+                <Text style={{ fontWeight: 900, fontSize: 25 }}>Guest</Text>
             )}
                 
             </View>

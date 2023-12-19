@@ -47,7 +47,7 @@ const BottomNavigation = () => {
         {user ? (
           <>
             <Tab.Screen name="Profile" component={Profile} />
-            {/* <Tab.Screen name="CourseDetail" component={CourseDetail} /> */}
+            <Tab.Screen name="LessonsDetails" component={LessonsDetails} />
           </>
 
         ) : (

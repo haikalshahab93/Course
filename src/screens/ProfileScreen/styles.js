@@ -29,6 +29,7 @@ export default StyleSheet.create({
         borderRadius: 20,
         padding: 20,
         margin: 20,
+        marginTop: -30,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,9 +44,9 @@ export default StyleSheet.create({
         width: width / 4,
         height: width / 4,
         borderRadius: (width / 4) / 2,
-        borderWidth: 1.5,
-        borderColor: '#A0A0A0',
-        marginBottom: 10,
+        borderWidth: 3,
+        borderColor: 'white',
+        marginTop: -70,
     },
     textName: {
         fontSize: 30,
@@ -94,13 +95,13 @@ export default StyleSheet.create({
         fontSize: 16,
     },
     saveButton: {
-        backgroundColor: 'green',
+        backgroundColor: '#4AA15C',
     },
     cancelButton: {
-        backgroundColor: 'red',
+        backgroundColor: '#DF5C3F',
     },
     editButton: {
-        backgroundColor: '#8ACFFB',
+        backgroundColor: '#32AAFF',
     },
     logoutButton: {
         backgroundColor: '#F5834D',

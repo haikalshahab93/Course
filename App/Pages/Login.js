@@ -33,7 +33,7 @@ export default function LoginScreen() {
        
         const [fontsLoaded] = useFonts({
             'LilitaOne': LilitaOne_400Regular,
-          });
+        });
 
     return (
         <View style={styles.container}>
@@ -61,7 +61,7 @@ export default function LoginScreen() {
                     fontWeight:'400',
                     color: 'white'}
                 }>
-                    Welcome to HRH Course
+                    Hi! Welcome Back to HRH Course
                 </Text>
                 <View
                     style={styles.inputContainer}>

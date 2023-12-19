@@ -6,6 +6,7 @@ import { auth, db } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, collection } from "firebase/firestore"
 import * as Crypto from 'expo-crypto';
+import { useFonts, LilitaOne_400Regular } from '@expo-google-fonts/lilita-one';
 
 
 const Registration = ({ navigation }) => {
@@ -17,7 +18,10 @@ const Registration = ({ navigation }) => {
     const onFooterLinkPress = () => {
       navigation.navigate('Login');
     };
-  
+
+    const [fontsLoaded] = useFonts({
+        'LilitaOne': LilitaOne_400Regular,
+    });
 
     const hashPassword = async (password) => {
         try {
@@ -64,6 +68,11 @@ const Registration = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+            <Image 
+                source={require('../Assets/signupbg.png')}
+                style={styles.image} />
+            </View>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
@@ -72,20 +81,22 @@ const Registration = ({ navigation }) => {
                     source={require('../../assets/icon.png')}
                 /> */}
                 <Text style={{
+                    fontFamily: 'LilitaOne',
                     fontSize: 68,
                     textAlign:'center',
-                    fontWeight:'700'}
+                    fontWeight:'700',
+                    color: '#FBE66A'}
                 }
                 >
                     Sign up
                 </Text>
                 <Text style={{
                     fontSize: 16,
-                    marginBottom: 30,
                     textAlign:'center',
-                    fontWeight:'400'}
+                    fontWeight:'600',
+                    color: 'white'}
                 }>
-                    Create account
+                    Hello! Let's Create an account
                 </Text>
                 <View style={styles.inputContainer}>
                     <Text style={{
