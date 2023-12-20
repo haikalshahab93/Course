@@ -14,7 +14,6 @@ export default StyleSheet.create({
         marginRight: 30,
         marginBottom: -20,
         padding: 20,
-        borderRadius: 5,
         alignItems: 'center',
         borderRadius: 10,
         shadowColor: 'black',

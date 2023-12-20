@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState, useCallback, useRef } from 'react'
 import Colors from '../Shared/Colors';
+import styles from '../../src/screens/LessonsDetailsScreen/styles';
 import YoutubeIframe from 'react-native-youtube-iframe';
 
 const data = [
@@ -32,13 +33,12 @@ const LessonsDetails = () => {
     }, []);
 
     return (
-        <View style={{padding:30,paddingTop:30}}>
-            
-            <View>
-                <Text style={{fontWeight:'900', fontSize:30}}>
+        <View style={styles.container}>
+            <View style={styles.content}>
+                <Text style={{fontWeight:'900', fontSize:30, paddingLeft:20, paddingRight:20}}>
                     {lesson.name}
                 </Text>
-                <Text style={{color:Colors.grey, marginBottom:20}}>
+                <Text style={{color:Colors.grey, marginBottom:20, paddingLeft:20,  paddingRight:20}}>
                     By {lesson.author}
                 </Text>
                 <YoutubeIframe
@@ -47,10 +47,10 @@ const LessonsDetails = () => {
                     videoId={lesson.youtubeId}
                     onChangeState={onStateChange}
                 />
-                <Text style={{marginTop:20, marginBottom:5, fontSize:20, fontWeight:'900'}}>
+                <Text style={{marginTop:20, marginBottom:5, paddingLeft:20,  paddingRight:20, fontSize:20, fontWeight:'900'}}>
                     About Course
                 </Text>
-                <Text numberOfLines={4} style={{color:Colors.grey}}>
+                <Text numberOfLines={4} style={{color:Colors.grey, paddingLeft:20,  paddingRight:20,}}>
                     {lesson.description}
                 </Text>
             </View>

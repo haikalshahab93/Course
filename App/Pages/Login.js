@@ -21,16 +21,16 @@ export default function LoginScreen() {
 
     const onLoginPress = async () => {
         if (email === '' || password === '') {
-          setValidationMessage('Data Tidak Boleh Kosong');
-          return;
+            setValidationMessage('Data Tidak Boleh Kosong');
+            return;
         }
         try {
             await signIn(email, password);
-          } catch (error) {
-            setValidationMessage('Email Atau Password Salah !');
-          }
+            } catch (error) {
+                setValidationMessage('Email Atau Password Salah !');
+            }
         };
-       
+        
         const [fontsLoaded] = useFonts({
             'LilitaOne': LilitaOne_400Regular,
         });
