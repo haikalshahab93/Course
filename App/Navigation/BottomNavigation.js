@@ -32,7 +32,7 @@ const BottomNavigation = () => {
             } else if (route.name === 'Profile' && user) {
               iconName = 'person';
             } else if (route.name === 'LessonsDetails' && user) {
-              iconName = 'person';
+              iconName = 'ios-book';
             } else {
               iconName = 'ios-book';
             }
@@ -47,13 +47,13 @@ const BottomNavigation = () => {
         {user ? (
           <>
             <Tab.Screen name="Profile" component={Profile} />
-            <Tab.Screen name="LessonsDetails" component={LessonsDetails} />
           </>
 
         ) : (
           <>
             <Tab.Screen name="Login" component={Login} />
             <Tab.Screen name="Register" component={Register} />
+            <Tab.Screen name="LessonsDetails" component={LessonsDetails} />
           </>
         )}
       </Tab.Navigator>

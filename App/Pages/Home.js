@@ -17,7 +17,7 @@ const Home = ({route}) => {
             {/* <SearchBar/> use if needed */}
             <Slider/>
             <VideoCourseList />
-            <LessonCourse/>
+            {/* <LessonCourse/> */}
         </ScrollView>
     )
 }

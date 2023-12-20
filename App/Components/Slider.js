@@ -58,7 +58,7 @@ const Slider = () => {
 
   const handlePress = (item) => {
     // Implement the desired functionality when an item is pressed
-    navigation.navigate('CourseDetail', { itemId: item.id, itemName: item.name, itemImageUrl: item.imageUrlData });
+    navigation.navigate('LessonsDetails', { itemId: item.id, itemName: item.name, itemImageUrl: item.imageUrlData });
   };
 
   return (
