@@ -2,66 +2,54 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '../../src/screens/RegistrationScreen/styles';
-import { auth, db } from '../../firebase';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, collection } from "firebase/firestore"
-import * as Crypto from 'expo-crypto';
 
 
 const Registration = ({ navigation }) => {
+    const [username, setUsername] = useState('');
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-  
-    const onFooterLinkPress = () => {
-      navigation.navigate('Login');
-    };
-  
 
-    const hashPassword = async (password) => {
+    const onRegisterPress = async () => {
         try {
-          const hashedPassword = await Crypto.digestStringAsync(
-            Crypto.CryptoDigestAlgorithm.SHA256,
-            password
-          );
-          return hashedPassword;
+          if (password !== confirmPassword) {
+            alert('Password and Confirm Password do not match');
+            return;
+          }
+    
+          // Kirim permintaan registrasi ke backend menggunakan fetch
+          const response = await fetch('https://hrh-course.up.railway.app/auth/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username,
+              fullName,
+              email,
+              password,
+            }),
+          });
+    
+          const responseData = await response.json();
+    
+          if (response && responseData.message === 'Registration successful') {
+            alert('Account created successfully!');
+            navigation.navigate('Login');
+          } else {
+            alert(responseData.message);
+          }
         } catch (error) {
-          console.error('Error hashing password:', error.message);
-          throw error;
+          console.error('Error creating account:', error.message);
+          alert('Failed to create account. Please try again.');
         }
       };
-      
-    const onRegisterPress = async () => {
-      if (password !== confirmPassword) {
-        Alert.alert("Passwords don't match.");
-        return;
-      }
-  
-      try {
-        const response = await createUserWithEmailAndPassword(auth, email, password);
-        const uid = response.user.uid;
-        const hashedPassword = await hashPassword(password);
-  
-        const userData = {
-          id: uid,
-          email,
-          fullName,
-          password: hashedPassword,
-          createdAt: new Date().toUTCString(),
-        };
-  
-        const usersRef = collection(db, 'users');
-        await setDoc(doc(usersRef, uid), userData);
-  
-        navigation.navigate('Beranda',{user:userData});
 
-      } catch (error) {
-        console.error('Registration failed:', error.message);
-        Alert.alert('Registration failed. Please try again.');
-      }
+    const onFooterLinkPress = () => {
+        // Navigasi ke halaman login
+        navigation.navigate('Login');
     };
-
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
@@ -72,9 +60,10 @@ const Registration = ({ navigation }) => {
                     source={require('../../assets/icon.png')}
                 /> */}
                 <Text style={{
-                    fontSize: 68,
-                    textAlign:'center',
-                    fontWeight:'700'}
+                    fontSize: 48,
+                    textAlign: 'center',
+                    fontWeight: '700'
+                }
                 }
                 >
                     Sign up
@@ -82,16 +71,38 @@ const Registration = ({ navigation }) => {
                 <Text style={{
                     fontSize: 16,
                     marginBottom: 30,
-                    textAlign:'center',
-                    fontWeight:'400'}
+                    textAlign: 'center',
+                    fontWeight: '400'
+                }
                 }>
                     Create account
                 </Text>
                 <View style={styles.inputContainer}>
+
                     <Text style={{
-                    fontSize: 16,
-                    fontWeight:'600'}
+                        fontSize: 16,
+                        fontWeight: '600'
                     }
+                    }
+                    >
+                        UserName
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Enter Username'
+                        placeholderTextColor="#aaaaaa"
+                        onChangeText={(text) => setUsername(text)}
+                        value={username}
+                        underlineColorAndroid="transparent"
+                        autoCapitalize="none"
+                    />
+
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: '600'
+                    }
+                    }
+
                     >
                         Full Name
                     </Text>
@@ -105,8 +116,9 @@ const Registration = ({ navigation }) => {
                         autoCapitalize="none"
                     />
                     <Text style={{
-                    fontSize: 16,
-                    fontWeight:'600'}
+                        fontSize: 16,
+                        fontWeight: '600'
+                    }
                     }
                     >
                         Email
@@ -121,8 +133,9 @@ const Registration = ({ navigation }) => {
                         autoCapitalize="none"
                     />
                     <Text style={{
-                    fontSize: 16,
-                    fontWeight:'600'}
+                        fontSize: 16,
+                        fontWeight: '600'
+                    }
                     }
                     >
                         Password
@@ -138,8 +151,9 @@ const Registration = ({ navigation }) => {
                         autoCapitalize="none"
                     />
                     <Text style={{
-                    fontSize: 16,
-                    fontWeight:'600'}
+                        fontSize: 16,
+                        fontWeight: '600'
+                    }
                     }
                     >
                         Re-Enter Password

@@ -8,6 +8,7 @@ import Beranda from '../Pages/Home';
 import Login from '../Pages/Login';
 import Profile from '../Pages/Profile';
 import Register from '../Pages/Registration';
+import HomeSlider from '../Pages/HomeSlider';
 import CourseDetail from '../Pages/CourseDetail';
 
 const Tab = createBottomTabNavigator();
@@ -31,8 +32,8 @@ const BottomNavigation = () => {
               iconName = 'ios-book';
             } else if (route.name === 'Profile' && user) {
               iconName = 'person';
-            } else if (route.name === 'CourseDetail' && user) {
-              iconName = 'person';
+            } else if (route.name === 'Course' && user) {
+              iconName = 'book';
             } else {
               iconName = 'ios-book';
             }
@@ -47,7 +48,8 @@ const BottomNavigation = () => {
         {user ? (
           <>
             <Tab.Screen name="Profile" component={Profile} />
-            {/* <Tab.Screen name="CourseDetail" component={CourseDetail} /> */}
+            <Tab.Screen name="Course" component={HomeSlider} />
+            <Tab.Screen name="CourseDetail" component={CourseDetail} />
           </>
 
         ) : (

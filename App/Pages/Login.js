@@ -6,10 +6,9 @@ import {useAuth} from '../Context/AuthContext';
 
 
 export default function LoginScreen() {
-
-
+    
     const {signIn} =useAuth();
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [validationMessage, setValidationMessage] = useState('');
 
@@ -19,14 +18,14 @@ export default function LoginScreen() {
     }
 
     const onLoginPress = async () => {
-        if (email === '' || password === '') {
+        if (username === '' || password === '') {
           setValidationMessage('Data Tidak Boleh Kosong');
           return;
         }
         try {
-            await signIn(email, password);
+            await signIn(username, password);
           } catch (error) {
-            setValidationMessage('Email Atau Password Salah !');
+            setValidationMessage('Username Atau Password Salah !');
           }
         };
        
@@ -59,14 +58,14 @@ export default function LoginScreen() {
                     fontWeight:'600'}
                     }
                     >
-                        Email
+                        Username
                     </Text>
                     <TextInput
                         style={styles.input}
-                        placeholder='Enter E-mail'
+                        placeholder='Enter Username'
                         placeholderTextColor="#aaaaaa"
-                        onChangeText={(text) => setEmail(text)}
-                        value={email}
+                        onChangeText={(text) => setUsername(text)}
+                        value={username}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
                     />

@@ -1,66 +1,61 @@
-import { View, Text } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import {useState,useEffect} from "react"
+import { View, Text, Image,TouchableOpacity } from 'react-native'
+import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Shared/Colors';
-import { Image } from 'react-native';
-import CourseContent from '../Components/CourseContent';
-import { TouchableOpacity } from 'react-native';
-// import GlobalApi from '../Shared/GlobalApi';
-import { AuthContext } from '../Context/AuthContext';
+import { useRoute,useNavigation } from '@react-navigation/native';
+import CourseContent from "../Components/CourseContent";
 
 
-export default function CourseDetails({route}) {
-    const { itemId, itemName, itemImageUrl } = route.params;
+export default function CourseDetails() {
+  const course = useRoute().params.item;
+  // const navigation = useNavigation();
+  // console.log(course)
 
-    // const param=useRoute().params;
-    // const [course,setCourse]=useState([])
-    // const navigation=useNavigation();
-    // const [userProgress,setUserProgress]=useState([]);
-    // const {userData,setUserData}=useContext(AuthContext);
-    // useEffect(()=>{
-      
-    //     setCourse(param?.courseData);
-    //     param.courseData.id?getCourseProgress():null;
-    // },[param.courseContentId])
+  const [datacourse, setCourse] = useState([]);
+  // const [userProgress, setUserProgress] = useState([]);
+  // const { userData, setUserData } = useContext(AuthContext);
+  // const [courseDetails, setcourseDetails] = useState([]);
 
-    // const getCourseProgress=()=>{
-    //   GlobalApi.getCourseProgress(userData.id,param?.courseData.id)
-    //   .then(resp=>{
-    //     if(resp.data.data)
-    //     {
-    //       const result=resp.data.data.map(item=>({
-    //         id:item.id,
-    //         "courseId": item.attributes.courseId,
-    //         "courseContentId":item.attributes.courseContentId,
-    //       }))
+  useEffect(() => {
+    // setCourse(course?.courseData);
+    // course.courseData.id ? getCourseProgress() : null;
 
-    //       setUserProgress(result);
-    //     }
-    //   })
-    // }
+    // Fetch data from /slider/:sliderid endpoint
+    if (course?.id) {
+      fetchSliderDetails(course.id);
+    }
+  }, [course.id]);
+
+
+  const fetchSliderDetails = (sliderId) => {
+    // Gantilah URL berikut dengan URL yang sesuai pada backend Anda
+    const sliderDetailsUrl = `https://hrh-course.up.railway.app/slider/${sliderId}`;
+    fetch(sliderDetailsUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setCourse(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching slider details:', error);
+      });
+  };
    
-
- 
+  
   return (
     <View style={{padding:20,paddingTop:50}}>
-        <TouchableOpacity onPress={()=>navigation.goBack()}>
-        <Ionicons name="arrow-back-sharp" size={24} color="black" />
-        </TouchableOpacity>
         <View>
             <Text style={{fontSize:20,
-            fontWeight:'bold'}}>{course.name}</Text>
-            <Text style={{color:Colors.gray}}>By Tubeguruji</Text>
-            <Image source={{uri:course.image}} 
+            fontWeight:'bold'}}>{datacourse.name}</Text>
+            <Text style={{color:Colors.gray}}>created : {datacourse.createdAt}</Text>
+            <Image source={{uri:`https://hrh-course.up.railway.app/slider/course/${datacourse.imageUrl}`}} 
             style={{height:150,marginTop:10,borderRadius:10}} />
             <Text style={{marginTop:10,
                fontSize:16, fontWeight:'bold'}}>About Course</Text>
             <Text numberOfLines={4} 
-            style={{color:Colors.gray}}>{course.description}</Text>
+            style={{color:Colors.gray}}>{datacourse.description}</Text>
         </View>
-        <CourseContent course={course} 
-         userProgress={userProgress}
-         courseType={param.courseType} />
+        <CourseContent coursedetail={datacourse.sliderDetails}/>
     </View>
   )
 }
