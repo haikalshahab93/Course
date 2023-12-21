@@ -16,5 +16,18 @@ export default StyleSheet.create({
         shadowOffset: { width: 0, height: 10 }, 
         shadowOpacity: 0.2, 
         shadowRadius: 15,
+        width: '100%'
+    },
+    nextPart: {
+        backgroundColor: 'white',
+        marginTop: 20,
+        width: '100%',
+        paddingTop: 30,
+        paddingBottom: 30,
+        borderRadius: 10,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 10 }, 
+        shadowOpacity: 0.2, 
+        shadowRadius: 15,
     }
 })

@@ -8,7 +8,7 @@ import Beranda from '../Pages/Home';
 import Login from '../Pages/Login';
 import Profile from '../Pages/Profile';
 import Register from '../Pages/Registration';
-import LessonsDetails from '../Pages/LessonsDetails';
+import Course from '../Pages/LessonsDetails';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,18 +23,18 @@ const BottomNavigation = () => {
           tabBarIcon: ({ color, size }) => {
             let iconName;
 
-            if (route.name === 'Beranda') {
-              iconName = 'ios-home';
+            if (route.name === 'Home') {
+              iconName = 'home-sharp';
             } else if (route.name === 'Login' && !user) {
               iconName = 'log-in';
             } else if (route.name === 'Register' && !user) {
-              iconName = 'ios-book';
+              iconName = 'apps';
             } else if (route.name === 'Profile' && user) {
               iconName = 'person';
-            } else if (route.name === 'LessonsDetails' && user) {
-              iconName = 'ios-book';
+            } else if (route.name === 'Course' && user) {
+              iconName = 'book';
             } else {
-              iconName = 'ios-book';
+              iconName = 'book';
             }
 
             return <Icon name={iconName} size={size} color={color} />;
@@ -42,7 +42,7 @@ const BottomNavigation = () => {
         })}
       >
         {/* Tampilkan Beranda bahkan jika pengguna belum login */}
-        <Tab.Screen name="Beranda" component={Beranda} />
+        <Tab.Screen name="Home" component={Beranda} />
 
         {user ? (
           <>
@@ -53,7 +53,7 @@ const BottomNavigation = () => {
           <>
             <Tab.Screen name="Login" component={Login} />
             <Tab.Screen name="Register" component={Register} />
-            <Tab.Screen name="LessonsDetails" component={LessonsDetails} />
+            <Tab.Screen name="Course" component={Course} />
           </>
         )}
       </Tab.Navigator>
