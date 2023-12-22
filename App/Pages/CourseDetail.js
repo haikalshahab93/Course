@@ -8,6 +8,7 @@ import CourseContent from "../Components/CourseContent";
 
 
 export default function CourseDetails() {
+  const item = '';
   const course = useRoute().params.item;
   // const navigation = useNavigation();
   // console.log(course)
