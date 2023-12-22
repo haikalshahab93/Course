@@ -42,28 +42,26 @@ const AuthProvider = ({ children }) => {
 
 
   useEffect(() => {
-    getProfile()
+    // const loadUserData = async () => {
+    //   try {
 
-    const loadUserData = async () => {
-      try {
-
-        // Mengambil data pengguna dari AsyncStorage
-        const userDataString = await AsyncStorage.getItem('userData');
+    //     // Mengambil data pengguna dari AsyncStorage
+    //     const userDataString = await AsyncStorage.getItem('userData');
         
-        // Jika data pengguna ditemukan, parse dari JSON ke objek
-        if (userDataString) {
-          const userData = JSON.parse(userDataString);
-          // Set data pengguna ke dalam state
-          await AsyncStorage.setItem('userProfile', JSON.stringify(userData));
-          setUser(userData);
-        }
-      } catch (error) {
-        console.error('Error loading user data:', error);
-      }
-    };
+    //     // Jika data pengguna ditemukan, parse dari JSON ke objek
+    //     if (userDataString) {
+    //       const userData = JSON.parse(userDataString);
+    //       // Set data pengguna ke dalam state
+    //       await AsyncStorage.setItem('userProfile', JSON.stringify(userData));
+    //       setUser(userData);
+    //     }
+    //   } catch (error) {
+    //     console.error('Error loading user data:', error);
+    //   }
+    // };
 
-    // Memanggil fungsi untuk memuat data pengguna saat komponen dimount
-    loadUserData();
+    // // Memanggil fungsi untuk memuat data pengguna saat komponen dimount
+    // loadUserData();
   }, []);
 
   const updateProfile = async (newUserData) => {
@@ -120,16 +118,9 @@ const AuthProvider = ({ children }) => {
       // Ambil data dari respons API
       const resource = await response.json();
 
+      setUser(resource)
       // Simpan token ke AsyncStorage (jika diperlukan)
-      await AsyncStorage.setItem('accessToken', resource.data.accessToken);
-      await AsyncStorage.setItem('userId', JSON.stringify(resource.data.userId));
-
-      setUser(resource.data)
-   
-    //   console.log(user)
-
-      // Panggil fungsi updateProfile untuk menyimpan informasi pengguna di AsyncStorage
-        // updateProfile(resource.data);
+      await AsyncStorage.setItem('accessToken',resource.data.accessToken);
 
     } catch (error) {
       console.error('Error during login:', error);

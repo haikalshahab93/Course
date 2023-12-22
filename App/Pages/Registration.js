@@ -10,14 +10,6 @@ const Registration = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-  
-    // const onFooterLinkPress = () => {
-    //   navigation.navigate('Login');
-    // };
-
-    // const [fontsLoaded] = useFonts({
-    //     'LilitaOne': LilitaOne_400Regular,
-    // });
 
     const onRegisterPress = async () => {
         try {
@@ -60,11 +52,6 @@ const Registration = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
-            <View style={styles.imageContainer}>
-            <Image 
-                source={require('../Assets/signupbg.png')}
-                style={styles.image} />
-            </View>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
@@ -73,22 +60,22 @@ const Registration = ({ navigation }) => {
                     source={require('../../assets/icon.png')}
                 /> */}
                 <Text style={{
-                    fontFamily: 'LilitaOne',
-                    fontSize: 68,
-                    textAlign:'center',
-                    fontWeight:'700',
-                    color: '#FBE66A'}
+                    fontSize: 48,
+                    textAlign: 'center',
+                    fontWeight: '700'
+                }
                 }
                 >
                     Sign up
                 </Text>
                 <Text style={{
                     fontSize: 16,
-                    textAlign:'center',
-                    fontWeight:'600',
-                    color: 'white'}
+                    marginBottom: 30,
+                    textAlign: 'center',
+                    fontWeight: '400'
+                }
                 }>
-                    Hello! Let's Create an account
+                    Create account
                 </Text>
                 <View style={styles.inputContainer}>
 

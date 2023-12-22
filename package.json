@@ -11,7 +11,6 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@ant-design/react-native": "^5.0.5",
-    "@expo-google-fonts/lilita-one": "^0.2.3",
     "@expo/webpack-config": "^19.0.0",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-community/masked-view": "^0.1.11",
@@ -44,10 +43,6 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-vector-icons": "^10.0.2",
     "react-native-web": "~0.19.6",
-<<<<<<< HEAD
-=======
-    "react-native-webview": "^13.6.3",
->>>>>>> 89b4c63056cff6a5722118cb941ff7c25d342f4d
     "react-native-youtube-iframe": "^2.3.0"
   },
   "devDependencies": {

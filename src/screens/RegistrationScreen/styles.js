@@ -22,20 +22,8 @@ export default StyleSheet.create({
         shadowOpacity: 0.2, 
         shadowRadius: 15,
     },
-    imageContainer: {
-        position: 'absolute',
-        top: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '110%',
-        overflow: 'hidden'
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover'
+    title: {
+
     },
     logo: {
         flex: 1,

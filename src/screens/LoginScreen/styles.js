@@ -14,6 +14,7 @@ export default StyleSheet.create({
         marginRight: 30,
         marginBottom: -20,
         padding: 20,
+        borderRadius: 5,
         alignItems: 'center',
         borderRadius: 10,
         shadowColor: 'black',
@@ -21,20 +22,8 @@ export default StyleSheet.create({
         shadowOpacity: 0.2, 
         shadowRadius: 15,
     },
-    imageContainer: {
-        position: 'absolute',
-        top: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '120%',
-        overflow: 'hidden'
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover'
+    title: {
+
     },
     logo: {
         flex: 1,
@@ -56,7 +45,7 @@ export default StyleSheet.create({
         paddingLeft: 16
     },
     button: {
-        backgroundColor: '#FF6801',
+        backgroundColor: '#8ACFFB',
         marginLeft: 50,
         marginRight: 50,
         margintop: -10,
@@ -70,9 +59,9 @@ export default StyleSheet.create({
         shadowRadius: 15,
     },
     buttonTitle: {
-        color: 'white',
+        color: 'black',
         fontSize: 16,
-        fontWeight: '600'
+        fontWeight: "bold"
     },
     footerView: {
         flex: 1,

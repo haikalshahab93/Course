@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity,Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useAuth } from '../Context/AuthContext';
 import styles from '../../src/screens/ProfileScreen/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,7 +10,7 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
 
 
-  const [userProfile, setUserProfile] = useState(null);
+  const [profile, setUserProfile] = useState([]);
 
 
   const [firstName, setFirstname] = useState('');
@@ -19,26 +19,41 @@ const Profile = () => {
   const [photo, setPhoto] = useState(null);
 
 
-  useEffect(() => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    // console.log(userProfile.photo, 'ini adalah poto')
-    const getUserProfile = async () => {
+  useEffect(() => {
+   
+    const fetchData = async () => {
       try {
-        const userProfileString = await AsyncStorage.getItem('userProfile');
-        if (userProfileString) {
-          const userProfileData = JSON.parse(userProfileString);
-          setFirstname(userProfileData.firstName);
-          setLasname(userProfileData.lastName);
-          setPhone(userProfileData.phone);
-          setPhoto(userProfileData.photo);
-          setUserProfile(userProfileData)
+        // Mendapatkan token dari penyimpanan lokal (Anda bisa menggunakan AsyncStorage di Expo)
+        const token =  await AsyncStorage.getItem('accessToken');
+        // Membuat permintaan HTTP dengan token di header
+        const response = await fetch(`https://hrh-course.up.railway.app/profile/}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        // Mendapatkan data dari respons JSON
+        const responseData = await response.json();
+        console.log(responseData)
+        // Menyimpan data ke state
+        setData(responseData);
       } catch (error) {
-        console.error('Error loading user profile:', error);
+        console.error('Error fetching data:', error);
       }
     };
-    getUserProfile();
-  }, []);
+
+
+    fetchData();
+  }, []); // Pastikan Anda mengganti dependensi useEffect sesuai kebutuhan
+
 
 
   const pickImage = async () => {
@@ -71,7 +86,7 @@ const Profile = () => {
         name: 'image.jpg',
         type: 'image/jpg',
       });
-      
+
       const response = await fetch(`https://hrh-course.up.railway.app/profile/${userProfile.id}`, {
         method: 'PUT',
         headers: {
@@ -119,7 +134,7 @@ const Profile = () => {
     setIsEditing(false);
   };
 
-
+console.log(profile)
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -131,7 +146,7 @@ const Profile = () => {
 
         {isEditing ? (
           <>
-          <Image source={{ uri: photo }} style={styles.photo} />
+            <Image source={{ uri: photo }} style={styles.photo} />
             <Button title="Select Image" onPress={pickImage} />
             <TextInput
               style={styles.editInput}

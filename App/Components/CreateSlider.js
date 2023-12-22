@@ -10,7 +10,7 @@ const CreateSlider = () => {
   const pickImage = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.imageUrl,
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
@@ -23,8 +23,6 @@ const CreateSlider = () => {
       console.error('Error picking image:', error);
     }
   };
-
-
   
   const createSlider = async () => {
     try {
@@ -41,19 +39,18 @@ const CreateSlider = () => {
         name: 'image.jpg',
         type: 'image/jpg',
       });
-  
+
       const response = await fetch('https://hrh-course.up.railway.app/slider', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data'
         },
         body: formData,
-      });
-
-      console.log(response.status)
+      })
   
-      if (response) {
+      
+      if (response.status === 200) {
         Alert.alert('Berhasil', 'Slider berhasil dibuat!');
         setName('');
         setDescription('');

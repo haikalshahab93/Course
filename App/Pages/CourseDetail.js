@@ -35,6 +35,7 @@ export default function CourseDetails() {
     fetch(sliderDetailsUrl)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setCourse(data)
       })
       .catch((error) => {

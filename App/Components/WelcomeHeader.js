@@ -33,16 +33,16 @@ const WelcomeHeader = () => {
         }
         }>
             <View>
-                <Text style={{ fontSize: 15 }}>Hello!</Text>
+                <Text style={{ fontSize: 15 }}>Hello</Text>
                 {user ? (
                <Text style={{ fontWeight: 900, fontSize: 25 }}>{user.fullName}</Text>
             ) : (
-                <Text style={{ fontWeight: 900, fontSize: 25 }}>Guest</Text>
+                <Text style={{ fontWeight: 900, fontSize: 25 }}>Guide</Text>
             )}
                 
             </View>
             {user ? (
-                <Image source={{uri:photoUrl}} style={{ width: 50, height: 50, borderRadius: 100, }} />
+                <Image source={require('./../Assets/Profile-pic.png')} style={{ width: 50, height: 50, borderRadius: 100, }} />
             ) : (
                 <Image source={require('./../Assets/Profile-pic.png')} style={{ width: 50, height: 50, borderRadius: 100, }} />
             )}

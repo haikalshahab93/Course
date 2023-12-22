@@ -18,6 +18,7 @@ export default StyleSheet.create({
         width: width,
         height: '100%',
         overflow: 'hidden'
+        
     },
     image: {
         width: '100%',
@@ -29,7 +30,6 @@ export default StyleSheet.create({
         borderRadius: 20,
         padding: 20,
         margin: 20,
-        marginTop: -30,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -44,9 +44,9 @@ export default StyleSheet.create({
         width: width / 4,
         height: width / 4,
         borderRadius: (width / 4) / 2,
-        borderWidth: 3,
-        borderColor: 'white',
-        marginTop: -70,
+        borderWidth: 1.5,
+        borderColor: '#A0A0A0',
+        marginBottom: 10,
     },
     textName: {
         fontSize: 30,
@@ -95,13 +95,13 @@ export default StyleSheet.create({
         fontSize: 16,
     },
     saveButton: {
-        backgroundColor: '#4AA15C',
+        backgroundColor: 'green',
     },
     cancelButton: {
-        backgroundColor: '#DF5C3F',
+        backgroundColor: 'red',
     },
     editButton: {
-        backgroundColor: '#32AAFF',
+        backgroundColor: '#8ACFFB',
     },
     logoutButton: {
         backgroundColor: '#F5834D',
