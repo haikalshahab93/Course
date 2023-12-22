@@ -3,13 +3,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import SliderList from '../Components/SliderList';
 import CreateSlider from '../Components/CreateSlider';
+import styles from '../../src/screens/HomeSlider/styles';
 
 const HomeSlider = () => {
   return (
-    <View>
-      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Create New Slider</Text>
+    <View style={styles.container}>
+      <Text style={{ fontSize: 36, fontWeight: 'bold', paddingBottom: 10 }}>Create Course</Text>
       <CreateSlider />
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Course List</Text>
+      <Text style={{ fontSize: 36, fontWeight: 'bold', paddingTop: 10 }}>Course List</Text>
       <SliderList />
     </View>
   );

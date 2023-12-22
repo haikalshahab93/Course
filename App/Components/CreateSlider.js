@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import styles from '../../src/screens/HomeSlider/styles';
 
 const CreateSlider = () => {
   const [name, setName] = useState('');
@@ -66,26 +67,27 @@ const CreateSlider = () => {
 
   console.log(imageUrl)
   return (
-    <View style={{ padding: 16 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
-        Create Slider
+    <View style={styles.newCourseContainer}>
+      <Text style={{ fontSize: 24, fontWeight: '900', marginBottom: 10 }}>
+        Add New Course
       </Text>
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 8 }}
+        style={{ height: 30, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10 }}
         placeholder="Name"
         value={name}
         onChangeText={(text) => setName(text)}
       />
       <TextInput
-        style={{ height: 80, borderColor: 'gray', borderWidth: 1, marginBottom: 8 }}
+        style={{ height: 60, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10 }}
         placeholder="Description"
         multiline
         value={description}
         onChangeText={(text) => setDescription(text)}
       />
-      <Button title="Select Image" onPress={pickImage} />
+      <Button title="Select Image" onPress={pickImage} color='#55804A'/>
       {imageUrl && <Image source={{ uri: imageUrl }} style={{ width: 200, height: 200, marginVertical: 8 }} />}
-      <Button title="Create Slider" onPress={createSlider} />
+      <Text style={{fontSize:5, color: 'white'}}>.</Text>
+      <Button title="Create Slider" onPress={createSlider} color='#ED8440' />
     </View>
   );
 };
