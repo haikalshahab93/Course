@@ -59,20 +59,22 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    margin: 8,
+    margin: 5,
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 10,
     backgroundColor: '#fff',
     overflow: 'hidden',
   },
   image: {
     width: '100%',
     height: 150,
-    borderRadius: 8,
-    marginBottom: 8,
+    borderRadius: 10,
+    marginBottom: 10,
   },
   name: {
-    fontSize: 14,
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });

@@ -24,16 +24,16 @@ const VideoCourseList = () => {
         <View 
         style={{
             marginTop: 10,
-            paddingTop: 20,
+            paddingTop: 10,
             paddingBottom: 20,
             backgroundColor: '#F5CF46',
             borderRadius: 20,
         }}>
             <Text style={{
-                fontSize:36,
+                fontSize:24,
                 fontWeight:'900',
                 marginLeft:10,
-                marginBottom:18
+                marginBottom:5
             }}> 
                 Recommended for you
             </Text>

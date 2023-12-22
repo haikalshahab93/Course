@@ -72,13 +72,13 @@ const CreateSlider = () => {
         Add New Course
       </Text>
       <TextInput
-        style={{ height: 30, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10 }}
+        style={{ height: 30, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10, backgroundColor: 'white' }}
         placeholder="Name"
         value={name}
         onChangeText={(text) => setName(text)}
       />
       <TextInput
-        style={{ height: 60, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10 }}
+        style={{ height: 60, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingLeft: 10, borderRadius: 10, backgroundColor: 'white' }}
         placeholder="Description"
         multiline
         value={description}

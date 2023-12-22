@@ -10,7 +10,7 @@ export default StyleSheet.create({
         paddingTop: 20,
     },
     newCourseContainer: {
-        backgroundColor: 'white',
+        backgroundColor: '#FFF',
         padding: 20,
         borderRadius: 20,
     },

@@ -45,17 +45,28 @@ export default function CourseDetails() {
    
   
   return (
-    <View style={{padding:20,paddingTop:50}}>
+    <View style={{padding:20,paddingTop:20}}>
         <View>
-            <Text style={{fontSize:20,
-            fontWeight:'bold'}}>{datacourse.name}</Text>
-            <Text style={{color:Colors.gray}}>created : {datacourse.createdAt}</Text>
+            <Text style={{fontSize:36,
+            fontWeight:'900'}}>{datacourse.name}</Text>
+            <Text style={{color:Colors.grey}}>created : {datacourse.createdAt}</Text>
             <Image source={{uri:`https://hrh-course.up.railway.app/slider/course/${datacourse.imageUrl}`}} 
-            style={{height:150,marginTop:10,borderRadius:10}} />
-            <Text style={{marginTop:10,
-               fontSize:16, fontWeight:'bold'}}>About Course</Text>
-            <Text numberOfLines={4} 
-            style={{color:Colors.gray}}>{datacourse.description}</Text>
+            style={{height:200,marginTop:10,borderRadius:10}} />
+            <View style={{
+              marginTop: 20,
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingBottom: 10,
+              borderRadius: 10,
+              borderWidth: 1,
+              borderColor: Colors.grey
+            }}>
+              <Text style={{marginTop:10,
+                fontSize:20, fontWeight:'bold'}}>About Course</Text>
+              <Text numberOfLines={4} 
+              style={{color:Colors.grey,
+                fontSize:14, fontWeight:'bold'}}>{datacourse.description}</Text>
+            </View>
         </View>
         <CourseContent coursedetail={datacourse.sliderDetails}/>
     </View>

@@ -37,10 +37,17 @@ export default function CourseContent({ coursedetail }) {
 
     console.log(coursedetail,'----------test')
     return (
-        <View style={{ marginTop: 10 }}>
+        <View style={{ 
+            marginTop: 10,
+            backgroundColor: '#FBE66A',
+            borderRadius: 10,
+            marginTop: 20,
+            padding: 10,
+
+            }}>
             <Text style={{
                 fontWeight: 'bold',
-                fontSize: 16
+                fontSize: 24
             }}>Course Content</Text>
             <FlatList
                 style={{ marginTop: 10 }}

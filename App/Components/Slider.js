@@ -23,9 +23,11 @@ const Slider = () => {
       <View style={{ marginTop: 5 }}>
         <Image
            source={{ uri: `https://hrh-course.up.railway.app/slider/course/${item.imageUrl}` }}
-          style={{ width: Dimensions.get('screen').width * 0.9, height: 200, borderRadius: 20 }}
+          style={{ width: Dimensions.get('screen').width * 0.9, height: 200, borderRadius: 10 }}
         />
-        <Text>{item.name}</Text>
+        <Text style={{
+          marginLeft: 10, marginTop: 10
+        }}>{item.name}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -36,7 +38,22 @@ const Slider = () => {
   };
 
   return (
-    <View>
+    <View 
+        style={{
+            marginTop: 10,
+            paddingTop: 10,
+            paddingBottom: 20,
+            backgroundColor: '#8ACFFB',
+            borderRadius: 20,
+        }}>
+      <Text style={{
+                fontSize:24,
+                fontWeight:'900',
+                marginLeft:10,
+                marginBottom:5
+            }}> 
+        New Courses!
+      </Text>
       <FlatList
         data={sliderData}
         renderItem={renderItem}
