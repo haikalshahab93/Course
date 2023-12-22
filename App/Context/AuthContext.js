@@ -42,26 +42,33 @@ const AuthProvider = ({ children }) => {
 
 
   useEffect(() => {
-    // const loadUserData = async () => {
-    //   try {
-
-    //     // Mengambil data pengguna dari AsyncStorage
-    //     const userDataString = await AsyncStorage.getItem('userData');
+    const getProfile = async () => {
+      try { 
+        const response = await fetch('https://hrh-course.up.railway.app/getProfile', {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'multipart/form-data'
+          },
+          body: formData,
+        })
+    
         
-    //     // Jika data pengguna ditemukan, parse dari JSON ke objek
-    //     if (userDataString) {
-    //       const userData = JSON.parse(userDataString);
-    //       // Set data pengguna ke dalam state
-    //       await AsyncStorage.setItem('userProfile', JSON.stringify(userData));
-    //       setUser(userData);
-    //     }
-    //   } catch (error) {
-    //     console.error('Error loading user data:', error);
-    //   }
-    // };
+        if (response.status === 200) {
+          Alert.alert('Berhasil', 'Slider berhasil dibuat!');
+          setName('');
+          setDescription('');
+          setImage(null);
+        } else {
+          Alert.alert('Error', 'Gagal membuat slider');
+        }
+      } catch (error) {
+        console.error('Error creating slider:', error);
+        Alert.alert('Error', 'Gagal membuat slider');
+      }
+    };
 
-    // // Memanggil fungsi untuk memuat data pengguna saat komponen dimount
-    // loadUserData();
+    getProfile()
   }, []);
 
   const updateProfile = async (newUserData) => {

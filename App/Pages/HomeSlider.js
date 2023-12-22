@@ -1,4 +1,3 @@
-// HomeSlider.js
 import React from 'react';
 import { View, Text } from 'react-native';
 import SliderList from '../Components/SliderList';

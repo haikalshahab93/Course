@@ -10,18 +10,38 @@ const WelcomeHeader = () => {
     const [photoUrl, setPhotoUrl] = useState(null);
       
         useEffect(() => {
-          const fetchPhoto = async () => {
-            try {
-              const storage = getStorage();
-              const photoRef = ref(storage,`profile/${user.photo}`);
-              const url = await getDownloadURL(photoRef);
-              setPhotoUrl(url);
-            } catch (error) {
-              console.error('Error fetching photo:', error.message);
-            }
-          };
-      
-          fetchPhoto();
+            
+            const getProfile = async () => {
+                try { 
+                  const response = await fetch('https://hrh-course.up.railway.app/profile', {
+                    method: 'POST',
+                    headers: {
+                      Accept: 'application/json',
+                      'Content-Type': 'multipart/form-data'
+                    },
+                    body: formData,
+                  })
+              
+                  
+                  if (response.status === 200) {
+                    Alert.alert('Berhasil', 'Slider berhasil dibuat!');
+                    setName('');
+                    setDescription('');
+                    setImage(null);
+                  } else {
+                    Alert.alert('Error', 'Gagal membuat slider');
+                  }
+                } catch (error) {
+                  console.error('Error creating slider:', error);
+                  Alert.alert('Error', 'Gagal membuat slider');
+                }
+              };
+
+
+              getProfile()
+
+
+            
         }, []);
 
     return (
