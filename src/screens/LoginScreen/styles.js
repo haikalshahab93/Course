@@ -60,7 +60,7 @@ export default StyleSheet.create({
         paddingLeft: 16
     },
     button: {
-        backgroundColor: '#8ACFFB',
+        backgroundColor: '#D96A33',
         marginLeft: 50,
         marginRight: 50,
         margintop: -10,

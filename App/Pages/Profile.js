@@ -172,7 +172,7 @@ console.log(profile)
           </>
         ) : (
           <>
-            <Image source={require('../Assets/colors1.png')} style={{ width: 150, height: 150, marginVertical: 8, borderRadius: 60 }} />
+            <Image source={require('../Assets/Profile-pic.png')} style={styles.profileImage} />
             <Text style={styles.textName}>{firstName} {lastName}</Text>
             <Text style={styles.textEmail}>{phone}</Text>
           </>

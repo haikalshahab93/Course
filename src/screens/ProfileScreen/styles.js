@@ -44,9 +44,13 @@ export default StyleSheet.create({
         width: width / 4,
         height: width / 4,
         borderRadius: (width / 4) / 2,
-        borderWidth: 1.5,
-        borderColor: '#A0A0A0',
-        marginBottom: 10,
+        borderWidth: 4,
+        borderColor: 'white',
+        marginTop: -70
+    },
+    photo: {
+        borderRadius: 30,
+
     },
     textName: {
         fontSize: 30,
@@ -95,15 +99,15 @@ export default StyleSheet.create({
         fontSize: 16,
     },
     saveButton: {
-        backgroundColor: 'green',
+        backgroundColor: '#55804A',
     },
     cancelButton: {
-        backgroundColor: 'red',
+        backgroundColor: '#D96A33',
     },
     editButton: {
         backgroundColor: '#8ACFFB',
     },
     logoutButton: {
-        backgroundColor: '#F5834D',
+        backgroundColor: '#ED8440',
     },
 });

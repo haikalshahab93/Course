@@ -9,7 +9,7 @@ const HomeSlider = () => {
     <View>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Create New Slider</Text>
       <CreateSlider />
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Slider List</Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Course List</Text>
       <SliderList />
     </View>
   );

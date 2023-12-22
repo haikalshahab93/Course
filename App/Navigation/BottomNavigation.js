@@ -9,7 +9,7 @@ import Login from '../Pages/Login';
 import Profile from '../Pages/Profile';
 import Register from '../Pages/Registration';
 import HomeSlider from '../Pages/HomeSlider';
-import LessonsDetails from '../Pages/LessonsDetails';
+import CourseDetail from '../Pages/CourseDetail';
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +49,7 @@ const BottomNavigation = () => {
           <>
             <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="Course" component={HomeSlider} />
-            <Tab.Screen name="LessonsDetails" component={LessonsDetails} />
+            <Tab.Screen name="CourseDetail" component={CourseDetail} />
           </>
 
         ) : (
