@@ -48,17 +48,19 @@ const Registration = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image
+                source={require('../Assets/signupbg.png')}
+                style={styles.image} />
+            </View>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                {/* <Image
-                    style={styles.logo}
-                    source={require('../../assets/icon.png')}
-                /> */}
                 <Text style={{
-                    fontSize: 48,
+                    marginTop: 20,
+                    fontSize: 72,
                     textAlign: 'center',
-                    fontWeight: '700'
+                    fontWeight: '900'
                 }
                 }
                 >
@@ -66,12 +68,12 @@ const Registration = ({ navigation }) => {
                 </Text>
                 <Text style={{
                     fontSize: 16,
-                    marginBottom: 30,
+                    marginBottom: 10,
                     textAlign: 'center',
                     fontWeight: '400'
                 }
                 }>
-                    Create account
+                    Hello! Let's Create Account First
                 </Text>
                 <View style={styles.inputContainer}>
 

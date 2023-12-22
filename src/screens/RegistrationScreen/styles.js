@@ -1,15 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
     container: {
         backgroundColor: '#8ACFFB',
         flex: 1,
-        paddingTop: 50,
         alignItems: 'center'
     },
     inputContainer: {
         backgroundColor: 'white',
-        marginTop: 30,
+        marginTop: 10,
         marginLeft: 30,
         marginRight: 30,
         marginBottom: -20,
@@ -22,8 +23,21 @@ export default StyleSheet.create({
         shadowOpacity: 0.2, 
         shadowRadius: 15,
     },
-    title: {
-
+    imageContainer: {
+        position: 'absolute',
+        top: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: width,
+        height: height,
+        overflow: 'hidden'
+        
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
     },
     logo: {
         flex: 1,
@@ -73,7 +87,7 @@ export default StyleSheet.create({
         color: '#2e2e2d'
     },
     footerLink: {
-        fontWeight: "bold",
+        fontWeight: "900",
         fontSize: 16
     }
 })

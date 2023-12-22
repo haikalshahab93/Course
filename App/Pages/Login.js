@@ -1,10 +1,9 @@
 import React, { useState,useContext } from 'react'
-import {Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '../../src/screens/LoginScreen/styles';
 import {useAuth} from '../Context/AuthContext';
-
-
+// import { useFonts, LilitaOne_400Regular} from '@expo-google-fonts/lilita-one'
 export default function LoginScreen() {
     
     const {signIn} =useAuth();
@@ -12,6 +11,13 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('')
     const [validationMessage, setValidationMessage] = useState('');
 
+    // const [fontsLoaded] = useFonts({
+    //     LilitaOne_400Regular,
+    // });
+    
+    // if (!fontsLoaded) {
+    //     return null;
+    // }
 
     const onFooterLinkPress = () => {
         navigation.navigate('Register')
@@ -32,13 +38,19 @@ export default function LoginScreen() {
 
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image
+                source={require('../Assets/loginbg.png')}
+                style={styles.image} />
+            </View>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
                 <Text style={{
-                    fontSize: 68,
+                    fontSize: 72,
                     textAlign:'center',
-                    fontWeight:'700'}
+                    fontWeight:'900',
+                    color: '#FFE14D'}
                 }
                 >
                     Login
@@ -49,7 +61,7 @@ export default function LoginScreen() {
                     textAlign:'center',
                     fontWeight:'400'}
                 }>
-                    Welcome to HRH Course
+                    Hi! Welcome to HRH Course
                 </Text>
                 <View
                     style={styles.inputContainer}>
