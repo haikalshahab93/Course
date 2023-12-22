@@ -52,13 +52,14 @@ const Registration = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image
+                source={require('../Assets/signupbg.png')}
+                style={styles.image} />
+            </View>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                {/* <Image
-                    style={styles.logo}
-                    source={require('../../assets/icon.png')}
-                /> */}
                 <Text style={{
                     fontSize: 48,
                     textAlign: 'center',

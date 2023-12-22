@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
     container: {
@@ -22,8 +24,21 @@ export default StyleSheet.create({
         shadowOpacity: 0.2, 
         shadowRadius: 15,
     },
-    title: {
-
+    imageContainer: {
+        position: 'absolute',
+        top: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: width,
+        height: height,
+        overflow: 'hidden'
+        
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
     },
     logo: {
         flex: 1,
