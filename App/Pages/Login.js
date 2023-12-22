@@ -61,7 +61,7 @@ export default function LoginScreen() {
                     textAlign:'center',
                     fontWeight:'400'}
                 }>
-                    Welcome to HRH Course
+                    Hi! Welcome to HRH Course
                 </Text>
                 <View
                     style={styles.inputContainer}>

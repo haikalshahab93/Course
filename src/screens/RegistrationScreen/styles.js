@@ -10,7 +10,7 @@ export default StyleSheet.create({
     },
     inputContainer: {
         backgroundColor: 'white',
-        marginTop: 30,
+        marginTop: 10,
         marginLeft: 30,
         marginRight: 30,
         marginBottom: -20,
@@ -87,7 +87,7 @@ export default StyleSheet.create({
         color: '#2e2e2d'
     },
     footerLink: {
-        fontWeight: "bold",
+        fontWeight: "900",
         fontSize: 16
     }
 })
