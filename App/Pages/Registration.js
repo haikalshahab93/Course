@@ -17,20 +17,16 @@ const Registration = ({ navigation }) => {
             alert('Password and Confirm Password do not match');
             return;
           }
-    
+          
           // Kirim permintaan registrasi ke backend menggunakan fetch
           const response = await fetch('https://hrh-course.up.railway.app/auth/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              username,
-              fullName,
-              email,
-              password,
-            }),
+            body: JSON.stringify({username,fullName,email,password}),
           });
+          console.log(response)
     
           const responseData = await response.json();
     
